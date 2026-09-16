@@ -1,0 +1,38 @@
+version: 1
+
+project:
+  root: .
+  build_config: lzc-build.yml
+  package_file: package.yml
+  output: .lazycat-build/cccm.lpk
+  target_arch: amd64
+
+update:
+  strategy: publish
+  allow_downgrade: false
+  version_source:
+    type: image
+    image: cccm
+build:
+  run_buildscript: false
+images:
+  # 主应用：上游有完整三段 SemVer tag（0.1.0~0.1.2，含 v 前缀），排除 latest/0/0.1 等别名
+  - id: cccm
+    target: service
+    service: cccm
+    source: czyt/cccm
+    channel: stable
+    sort: semver
+    tag_regex: '^v?\d+\.\d+\.\d+$'
+    delivery:
+      mode: lazycat
+stores:
+  official:
+    enabled: true
+    skip_if_version_exists: true
+    changelog_locales: [zh, en]
+  private:
+    enabled: true
+    skip_if_version_exists: true
+    name: CCCM
+    summary: "Claude Code 配置管理器"

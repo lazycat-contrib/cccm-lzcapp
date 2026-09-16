@@ -1,0 +1,14 @@
+package: czyt.tech.app.cccm
+version: 0.1.2
+name: CCCM
+description: "Claude Code配置管理器"
+min_os_version: "1.5.0"
+homepage: https://github.com/dockers-x/cccm
+author: czyt
+locales:
+  zh:
+    description: "Claude Code 配置管理器"
+    name: CCCM
+  en:
+    description: "Claude Code configuration manager"
+    name: CCCM
