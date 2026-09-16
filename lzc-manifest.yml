@@ -6,11 +6,10 @@ application:
     - location: /
       backend: http://cccm:3000
   background_task: true
-
 services:
   cccm:
     # upstream: czyt/cccm:v0.1.2
-    image: czyt/cccm:v0.1.2
+    image: registry.lazycat.cloud/czyt/czyt/cccm:db942e316cb43953
     environment:
       # Admin password for the web interface
       - ADMIN_PASSWORD={{ .U.admin_password}}
